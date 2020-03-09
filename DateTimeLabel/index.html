@@ -60,13 +60,17 @@
         ];
         setInterval(function() {
           var d = new Date();
-          time.text(d.getHours() + ":" + d.getMinutes()); // + ":" + d.getSeconds());
+          time.text(padZeros(d.getHours(), 2) + ":" + padZeros(d.getMinutes(), 2)); // + ":" + d.getSeconds());
           date.text(
-            d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear()
+            padZeros(d.getDate(), 2) + " " + months[d.getMonth()] + " " + d.getFullYear()
           );
           dofw.text(daysofweek[d.getDay()].toLowerCase());
         }, 1000);
       });
+      
+      function padZeros(n, num){
+		return n.toString().padStart(num, "0");
+      }
     </script>
   </head>
   <body>
